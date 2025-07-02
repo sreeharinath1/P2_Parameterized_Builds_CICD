@@ -27,13 +27,6 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-war-plugin</artifactId>
         <version>3.4.0</version>
-        <configuration>
-          <archive>
-            <manifest>
-              <mainClass>com.example.App</mainClass> <!-- optional for WAR, useful in JARs -->
-            </manifest>
-          </archive>
-        </configuration>
       </plugin>
     </plugins>
   </build>
