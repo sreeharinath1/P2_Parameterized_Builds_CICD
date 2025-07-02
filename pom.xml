@@ -1,0 +1,80 @@
+<!-- Root element of every Maven POM file -->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+  <!-- Always 4.0.0 for Maven 2+ -->
+  <modelVersion>4.0.0</modelVersion>
+
+  <!-- Maven coordinates -->
+  <groupId>com.example</groupId>
+  <artifactId>project2</artifactId>
+  <version>1.0-SNAPSHOT</version> <!-- SNAPSHOT = development version -->
+  <packaging>war</packaging> <!-- Type of build artifact -->
+
+  <!-- Compiler settings -->
+  <properties>
+    <maven.compiler.source>17</maven.compiler.source>
+    <maven.compiler.target>17</maven.compiler.target>
+  </properties>
+
+  <!-- Build plugins (e.g., WAR packaging) -->
+  <build>
+    <plugins>
+      <!-- WAR plugin to generate .war file -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>3.4.0</version>
+        <configuration>
+          <archive>
+            <manifest>
+              <mainClass>com.example.App</mainClass> <!-- optional for WAR, useful in JARs -->
+            </manifest>
+          </archive>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+  <!-- Dependencies for the project -->
+  <dependencies>
+
+    <!-- JUnit for unit testing -->
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.13.2</version>
+      <scope>test</scope>
+    </dependency>
+
+    <!-- Servlet API for web development -->
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>javax.servlet-api</artifactId>
+      <version>4.0.1</version>
+      <scope>provided</scope> <!-- Provided by the servlet container (e.g., Tomcat) -->
+    </dependency>
+
+  </dependencies>
+
+  <!-- Optional: Define custom profiles -->
+  <profiles>
+    <profile>
+      <id>dev</id>
+      <properties>
+        <env.name>Development</env.name>
+      </properties>
+    </profile>
+
+    <profile>
+      <id>prod</id>
+      <properties>
+        <env.name>Production</env.name>
+      </properties>
+    </profile>
+  </profiles>
+
+</project>
+
